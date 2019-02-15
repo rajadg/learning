@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Angular 7</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <h1 id="angular-7">Angular 7</h1>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="installation">Installation</h3>
+<p>Angular 7 can be installed using npm:</p>
+<blockquote>
+<p>npm install -g @angular/cli</p>
+</blockquote>
+<p>The @angular/cli module is the command line module which is capable of creating and updating an angular 7 project. It is recommended to install the @angular/cli globally, but we can also install it locally in the project folder if required. When we install the angular cli as global, we can access the angular cli using the command <code>ng</code>. There are multiple options that the <code>ng</code> command supports. We can find them using <code>ng -h</code>.</p>
+<h4 id="detailed-steps">Detailed Steps</h4>
+<ol>
+<li>Install <strong>nodejs</strong>, which will also ensure <strong>npm</strong> is available as well. (url: <a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>)</li>
+<li>Install angular cli globally with following command in terminal:</li>
+</ol>
+<blockquote>
+<p><strong>npm install -g @angular/cli</strong></p>
+</blockquote>
+<ol start="3">
+<li>Once <strong>angular cli</strong> is installed, we have the angular functionality available in our PC.</li>
+<li>We need an IDE. There are many IDEs like Atom, Brackets, VS Code, Visual Studio Pro, Ecilpse, etc. Installing <strong>VS Code</strong> is recommended as it is suitable for all kind of developers and also widely used on all desktop platforms (url: <a href="https://code.visualstudio.com/Download">https://code.visualstudio.com/Download</a>)</li>
+<li>Typescript is required for angular, but it should be available as part of angular projects. To install typescript explicitly in the PC, use the following command in terminal:</li>
+</ol>
+<blockquote>
+<p><strong>npm install -g typescript</strong></p>
+</blockquote>
+<ol start="6">
+<li>Now we have the following items installed and ready to stard development of Angular JS:
+<ol>
+<li>NodeJS</li>
+<li>Angular 7 or later</li>
+<li>VS Code IDE</li>
+<li>typescript</li>
+</ol>
+</li>
+</ol>
+<h4 id="summary">Summary</h4>
+<p>With the following 2 steps we are ready to go:</p>
+<pre><code class="language-bash"><div>npm install -g typescript
+npm install -g @angular/cli
+</div></code></pre>
+<hr>
+<h3 id="creating-a-new-project">Creating a new project</h3>
+<h4 id="quick-steps">Quick Steps</h4>
+<p>The <code>@angular/cli</code> is used to create a new angular project and run it:</p>
+<pre><code class="language-bash"><div>ng new myApp
+<span class="hljs-built_in">cd</span> myApp
+ng serve
+</div></code></pre>
+<h4 id="detailed-description">Detailed Description</h4>
+<p>The <code>ng new</code> command is to create a new empty angular application. The command <code>ng serve</code> is used to host the angular app in a local static webserver. The default url where the angular app will be available is <a href="http://localhost:4200/">http://localhost:4200/</a></p>
+<p>The process of creating a new angular project will take sometime as the project creation requires retrieving a lot of libraries. The node_modules folder will be created which will contain around <em>30,000 files</em> with a total size of <em>270 Mb</em>. Depending on the speed of internet connection, the project creation time will vary (<em>time taken to download all 270 Mb from internet</em>)</p>
+<p><strong>Note</strong>: If there is a slow connection, it is better to explore npm library cache options like '<em>artifactory</em>', '<em>sonatype nexus</em>', <em>npm local cache</em>, etc. These products can cache the libraries downloaded from internet. So after first time creating the angular project, all required libraries will be cached. Future attempts at creating new project, adding new functionality, etc will take lesser duration.</p>
+<h3 id="running-the-application">Running the application</h3>
+<p>We can simply run the application using the following command line:</p>
+<blockquote>
+<p>ng serve</p>
+</blockquote>
+<p>This will launch a web server in the background that will host the angular application in port 4200. We can open the application in a browser using the url: <a href="http://localhost:4200/">http://localhost:4200/</a></p>
+<p>There is a much better way to run the application during development, which uses the following command line:</p>
+<blockquote>
+<p>ng serve -o --watch</p>
+</blockquote>
+<p>This command will start the angular app in backgroud, then open the url (<a href="http://localhost:4200/">http://localhost:4200/</a>) in the system's default browser (<em>the argument <strong>-o</strong> will do this</em>). Also whenever any changes are saved in the code, the code will recompile because of the <strong>--watch</strong> option.</p>
+<h1 id="components-and-routing">Components and Routing</h1>
+<p>We will look at how to generate components and also how to route to these components</p>
+<hr>
+<h2 id="generation">Generation</h2>
+<p>A component can be created using the angular CLI. Run the following command in the terminal:</p>
+<blockquote>
+<p>ng generate component &lt;component-name&gt;</p>
+</blockquote>
+<p>or the short form of it:</p>
+<blockquote>
+<p>ng g c &lt;component-name&gt;</p>
+</blockquote>
+<p>We can also try to add tests and specs for the component with options <strong>-it</strong> and <strong>-is</strong> like this:</p>
+<blockquote>
+<p>ng g c &lt;component-name&gt; -it -is</p>
+</blockquote>
+<p>To generate a component by name album-list we can run the following command in terminal:</p>
+<blockquote>
+<p>ng g c album-list -it -is</p>
+</blockquote>
+<p>The above command will create the following files:</p>
+<ul>
+<li>album-list/album-list.component.ts
+<ul>
+<li>This file contains the typescript code for the component (<code>class AlbumListComponent</code>).</li>
+</ul>
+</li>
+<li>album-list/album-list.component.spec.ts
+<ul>
+<li>The file contains the tests for the component album-list.</li>
+</ul>
+</li>
+</ul>
+<p>The HTML, css for this component are present inline like this:</p>
+<pre><code class="language-typescript"><div><span class="hljs-keyword">import</span> { Component, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'app-album-list'</span>,
+  template: <span class="hljs-string">`&lt;p&gt; album-list works! &lt;/p&gt;`</span>,
+  styles: []
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AlbumListComponent <span class="hljs-keyword">implements</span> OnInit {
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) { }
+  ngOnInit() {
+  }
+}
+</div></code></pre>
+<h3 id="description">Description</h3>
+<ol>
+<li>The <strong>AlbumListComponent</strong> contains the typescript code that will be later compiled to javascript and runs in the browser.</li>
+<li>The <code>@Component</code> is a typescript decorator. This decorator specifies the meatadata about the <strong>AlbumListComponent</strong> class:
+<ol>
+<li>The <strong>selector</strong> is name of the html tag we will use in the parent component to include this component like: <code>&lt;app-album-list&gt;&lt;/app-album-list&gt;</code></li>
+<li>The <strong>template</strong> specifies the inline HTML template. The HTML tags are specified inside the backquote string `` which is introduced in <strong>ES6</strong> that supports multiline text.</li>
+<li>The <strong>styles</strong> is an array of css styles used by the HTML part of this component.</li>
+</ol>
+</li>
+</ol>
+<h3 id="enhancments">Enhancments</h3>
+<p>If we have a lot of styles and html tags for this components then we can create dedicated html and css for this components as follows:</p>
+<ul>
+<li>album-list/album-list.component.html</li>
+<li>album-list/album-list.component.css</li>
+</ul>
+<p>After this update the album-list.component.ts file as follows:</p>
+<pre><code class="language-typescript"><div><span class="hljs-keyword">import</span> { Component, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'app-album-list'</span>,
+  templateUrl: <span class="hljs-string">'./album-list.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./album-list.component.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AlbumListComponent <span class="hljs-keyword">implements</span> OnInit {
+</div></code></pre>
+<p>There are two changes:</p>
+<ul>
+<li>Replaced the <code>template</code> parameter with <code>templateUrl</code> parameter and the value is the actual html file path './album-list.component.html'.</li>
+<li>Replaced the <code>styles</code> parameter with <code>styleUrls</code> parameter and the value is the actual html file path './album-list.component.css'.</li>
+</ul>
+<p>If we do not use the <code>-it</code> and <code>-is</code> options in <code>ng g c</code> command then the dedicated template file and style sheet will be created. (-it and -is means inline template and inline style)</p>
+<p>Alternatively we can update the <code>schematics</code> element in the angular.json file in the root folder of the application as follows:</p>
+<pre><code class="language-json"><div><span class="hljs-string">"schematics"</span>: {
+    <span class="hljs-attr">"@schematics/angular:component"</span>: {
+        <span class="hljs-attr">"inlineTemplate"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"inlineStyle"</span>: <span class="hljs-literal">false</span>
+    }
+}
+</div></code></pre>
+<p>After the above update any component we create will have a dedicate html template file and css file.</p>
+<h3 id="html-template">HTML Template</h3>
+<ul>
+<li><strong>default option</strong>: (<code>templateUrl: './app-component.html'</code>)
+<ul>
+<li>This puts the template Html in a separate file.</li>
+</ul>
+</li>
+<li><strong>inline option</strong>: This can be done when creating a component using <code>-it</code> switch in command line. The inline html template looks like this in the component.ts file:<pre><code class="language-typescript"><div>template: <span class="hljs-string">`&lt;div&gt;Inline Template&lt;/div&gt;`</span>
+</div></code></pre>
+<ul>
+<li>It is better to use the ES7 backquote (``) for strings inside the html inline template. This syntax allows us to use html template with multiple lines inside the typescript code easily.</li>
+</ul>
+</li>
+</ul>
+<h3 id="styles">Styles</h3>
+<ul>
+<li><strong>default option</strong>: (<code>styleUrl: './app-component.css'</code>)
+<ul>
+<li>This puts the css styles in a separate file.</li>
+</ul>
+</li>
+<li><strong>inline option</strong>: This can be done when creating a component using <code>-is</code> switch in command line. The inline css style looks like this in the component.ts file:<pre><code class="language-typescript"><div>styles: (styles: [<span class="hljs-string">`div {color: red}`</span>, <span class="hljs-string">`span {color: green}`</span>])
+</div></code></pre>
+<ul>
+<li>The styles are embedded inside teh component.ts file.</li>
+<li>The styles is a array of strings.</li>
+<li>Use the ES7 backquote (``) for inline styles with multiple lines.</li>
+</ul>
+</li>
+</ul>
+<h3 id="interpolation">Interpolation</h3>
+<ul>
+<li>Declare a variable in the component class (e.g: <code>title</code>).</li>
+<li>Use the variable in the html template using the notation <code>{{ }}</code>.
+Example:</li>
+</ul>
+<pre><code class="language-html"><div><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Welcome to {{title}} <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+<ul>
+<li>The component class must inherit from the OnInit. The OnInit is declared in teh (<code>@angular/core</code> module)</li>
+<li>We can have expressions in interpolation. Example: <code>{{2+2}}</code> in the html will be displayed as <code>4</code> in the UI.</li>
+<li>Any javascript expression can be used inside the notation <code>{{}}</code></li>
+<li>The expression inside <code>{{}}</code> will translate to a value of function call. But it cannot be used assign a value to a variable.</li>
+<li>All expressions (inside template HTML) are scoped inside the component class only. But code inside the Component class can easily access the global variables.</li>
+<li>In case we want to access some global variable inside the template HTML we need to create a proxy inside the component class to access the global. This proxy will be a member of component class, so accessible within HTML template.</li>
+</ul>
+<hr>
+<h2 id="using-a-component">Using a Component</h2>
+<p>There are two ways a component can be added to a parent component:</p>
+<ol>
+<li>Directly embedding the html selector tag into the parent component. An example for this is the app.component created by default in the angular application.</li>
+<li>Creating a route that can embed more than one component in the parent component.</li>
+</ol>
+<hr>
+<h3 id="adding-a-child-component">Adding a child component</h3>
+<h4 id="todo">TODO</h4>
+<p>Explanation of how to add a child component</p>
+<h3 id="routing">Routing</h3>
+<p>Routes are used to embedd multiple components in a parent and then switch between each based on the url requested.</p>
+<h4 id="todo-1">TODO</h4>
+<p>Explanation of how to setup routes</p>
+<hr>
+<h2 id="app-vs-module-vs-component">App vs Module vs Component</h2>
+<ul>
+<li>An app can have multiple modules</li>
+<li>A module can have multiple components</li>
+<li>A component is similar to a controller in angulars 1.x.</li>
+<li>A component implements a UI fragment. It could be a html tag or an attribute or a class.</li>
+</ul>
+<hr>
+<h2 id="parts-of">Parts of</h2>
+
+    </body>
+    </html>

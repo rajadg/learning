@@ -1,0 +1,515 @@
+C:\Users\Raja\AppData\Roaming\npm
++-- @angular/cli@7.1.4
+| +-- @angular-devkit/architect@0.11.4
+| | +-- @angular-devkit/core@7.1.4 deduped
+| | `-- rxjs@6.3.3
+| |   `-- tslib@1.9.3
+| +-- @angular-devkit/core@7.1.4
+| | +-- ajv@6.5.3
+| | | +-- fast-deep-equal@2.0.1
+| | | +-- fast-json-stable-stringify@2.0.0 deduped
+| | | +-- json-schema-traverse@0.4.1
+| | | `-- uri-js@4.2.2
+| | |   `-- punycode@2.1.1
+| | +-- chokidar@2.0.4
+| | | +-- anymatch@2.0.0
+| | | | +-- micromatch@3.1.10
+| | | | | +-- arr-diff@4.0.0
+| | | | | +-- array-unique@0.3.2 deduped
+| | | | | +-- braces@2.3.2 deduped
+| | | | | +-- define-property@2.0.2
+| | | | | | +-- is-descriptor@1.0.2
+| | | | | | | +-- is-accessor-descriptor@1.0.0
+| | | | | | | | `-- kind-of@6.0.2 deduped
+| | | | | | | +-- is-data-descriptor@1.0.0
+| | | | | | | | `-- kind-of@6.0.2 deduped
+| | | | | | | `-- kind-of@6.0.2 deduped
+| | | | | | `-- isobject@3.0.1 deduped
+| | | | | +-- extend-shallow@3.0.2
+| | | | | | +-- assign-symbols@1.0.0
+| | | | | | `-- is-extendable@1.0.1
+| | | | | |   `-- is-plain-object@2.0.4
+| | | | | |     `-- isobject@3.0.1 deduped
+| | | | | +-- extglob@2.0.4
+| | | | | | +-- array-unique@0.3.2 deduped
+| | | | | | +-- define-property@1.0.0
+| | | | | | | `-- is-descriptor@1.0.2
+| | | | | | |   +-- is-accessor-descriptor@1.0.0
+| | | | | | |   | `-- kind-of@6.0.2 deduped
+| | | | | | |   +-- is-data-descriptor@1.0.0
+| | | | | | |   | `-- kind-of@6.0.2 deduped
+| | | | | | |   `-- kind-of@6.0.2 deduped
+| | | | | | +-- expand-brackets@2.1.4
+| | | | | | | +-- debug@2.6.9 deduped
+| | | | | | | +-- define-property@0.2.5
+| | | | | | | | `-- is-descriptor@0.1.6 deduped
+| | | | | | | +-- extend-shallow@2.0.1
+| | | | | | | | `-- is-extendable@0.1.1 deduped
+| | | | | | | +-- posix-character-classes@0.1.1
+| | | | | | | +-- regex-not@1.0.2 deduped
+| | | | | | | +-- snapdragon@0.8.2 deduped
+| | | | | | | `-- to-regex@3.0.2 deduped
+| | | | | | +-- extend-shallow@2.0.1
+| | | | | | | `-- is-extendable@0.1.1 deduped
+| | | | | | +-- fragment-cache@0.2.1 deduped
+| | | | | | +-- regex-not@1.0.2 deduped
+| | | | | | +-- snapdragon@0.8.2 deduped
+| | | | | | `-- to-regex@3.0.2 deduped
+| | | | | +-- fragment-cache@0.2.1
+| | | | | | `-- map-cache@0.2.2 deduped
+| | | | | +-- kind-of@6.0.2
+| | | | | +-- nanomatch@1.2.13
+| | | | | | +-- arr-diff@4.0.0 deduped
+| | | | | | +-- array-unique@0.3.2 deduped
+| | | | | | +-- define-property@2.0.2 deduped
+| | | | | | +-- extend-shallow@3.0.2 deduped
+| | | | | | +-- fragment-cache@0.2.1 deduped
+| | | | | | +-- is-windows@1.0.2
+| | | | | | +-- kind-of@6.0.2 deduped
+| | | | | | +-- object.pick@1.3.0 deduped
+| | | | | | +-- regex-not@1.0.2 deduped
+| | | | | | +-- snapdragon@0.8.2 deduped
+| | | | | | `-- to-regex@3.0.2 deduped
+| | | | | +-- object.pick@1.3.0
+| | | | | | `-- isobject@3.0.1 deduped
+| | | | | +-- regex-not@1.0.2
+| | | | | | +-- extend-shallow@3.0.2 deduped
+| | | | | | `-- safe-regex@1.1.0 deduped
+| | | | | +-- snapdragon@0.8.2 deduped
+| | | | | `-- to-regex@3.0.2 deduped
+| | | | `-- normalize-path@2.1.1 deduped
+| | | +-- async-each@1.0.1
+| | | +-- braces@2.3.2
+| | | | +-- arr-flatten@1.1.0
+| | | | +-- array-unique@0.3.2
+| | | | +-- extend-shallow@2.0.1
+| | | | | `-- is-extendable@0.1.1
+| | | | +-- fill-range@4.0.0
+| | | | | +-- extend-shallow@2.0.1
+| | | | | | `-- is-extendable@0.1.1 deduped
+| | | | | +-- is-number@3.0.0
+| | | | | | `-- kind-of@3.2.2
+| | | | | |   `-- is-buffer@1.1.6
+| | | | | +-- repeat-string@1.6.1
+| | | | | `-- to-regex-range@2.1.1
+| | | | |   +-- is-number@3.0.0 deduped
+| | | | |   `-- repeat-string@1.6.1 deduped
+| | | | +-- isobject@3.0.1
+| | | | +-- repeat-element@1.1.3
+| | | | +-- snapdragon@0.8.2
+| | | | | +-- base@0.11.2
+| | | | | | +-- cache-base@1.0.1
+| | | | | | | +-- collection-visit@1.0.0
+| | | | | | | | +-- map-visit@1.0.0
+| | | | | | | | | `-- object-visit@1.0.1 deduped
+| | | | | | | | `-- object-visit@1.0.1
+| | | | | | | |   `-- isobject@3.0.1 deduped
+| | | | | | | +-- component-emitter@1.2.1 deduped
+| | | | | | | +-- get-value@2.0.6
+| | | | | | | +-- has-value@1.0.0
+| | | | | | | | +-- get-value@2.0.6 deduped
+| | | | | | | | +-- has-values@1.0.0
+| | | | | | | | | +-- is-number@3.0.0 deduped
+| | | | | | | | | `-- kind-of@4.0.0
+| | | | | | | | |   `-- is-buffer@1.1.6 deduped
+| | | | | | | | `-- isobject@3.0.1 deduped
+| | | | | | | +-- isobject@3.0.1 deduped
+| | | | | | | +-- set-value@2.0.0
+| | | | | | | | +-- extend-shallow@2.0.1
+| | | | | | | | | `-- is-extendable@0.1.1 deduped
+| | | | | | | | +-- is-extendable@0.1.1 deduped
+| | | | | | | | +-- is-plain-object@2.0.4 deduped
+| | | | | | | | `-- split-string@3.1.0 deduped
+| | | | | | | +-- to-object-path@0.3.0
+| | | | | | | | `-- kind-of@3.2.2
+| | | | | | | |   `-- is-buffer@1.1.6 deduped
+| | | | | | | +-- union-value@1.0.0
+| | | | | | | | +-- arr-union@3.1.0 deduped
+| | | | | | | | +-- get-value@2.0.6 deduped
+| | | | | | | | +-- is-extendable@0.1.1 deduped
+| | | | | | | | `-- set-value@0.4.3
+| | | | | | | |   +-- extend-shallow@2.0.1
+| | | | | | | |   | `-- is-extendable@0.1.1 deduped
+| | | | | | | |   +-- is-extendable@0.1.1 deduped
+| | | | | | | |   +-- is-plain-object@2.0.4 deduped
+| | | | | | | |   `-- to-object-path@0.3.0 deduped
+| | | | | | | `-- unset-value@1.0.0
+| | | | | | |   +-- has-value@0.3.1
+| | | | | | |   | +-- get-value@2.0.6 deduped
+| | | | | | |   | +-- has-values@0.1.4
+| | | | | | |   | `-- isobject@2.1.0
+| | | | | | |   |   `-- isarray@1.0.0 deduped
+| | | | | | |   `-- isobject@3.0.1 deduped
+| | | | | | +-- class-utils@0.3.6
+| | | | | | | +-- arr-union@3.1.0
+| | | | | | | +-- define-property@0.2.5
+| | | | | | | | `-- is-descriptor@0.1.6 deduped
+| | | | | | | +-- isobject@3.0.1 deduped
+| | | | | | | `-- static-extend@0.1.2
+| | | | | | |   +-- define-property@0.2.5
+| | | | | | |   | `-- is-descriptor@0.1.6 deduped
+| | | | | | |   `-- object-copy@0.1.0
+| | | | | | |     +-- copy-descriptor@0.1.1
+| | | | | | |     +-- define-property@0.2.5
+| | | | | | |     | `-- is-descriptor@0.1.6 deduped
+| | | | | | |     `-- kind-of@3.2.2
+| | | | | | |       `-- is-buffer@1.1.6 deduped
+| | | | | | +-- component-emitter@1.2.1
+| | | | | | +-- define-property@1.0.0
+| | | | | | | `-- is-descriptor@1.0.2
+| | | | | | |   +-- is-accessor-descriptor@1.0.0
+| | | | | | |   | `-- kind-of@6.0.2 deduped
+| | | | | | |   +-- is-data-descriptor@1.0.0
+| | | | | | |   | `-- kind-of@6.0.2 deduped
+| | | | | | |   `-- kind-of@6.0.2 deduped
+| | | | | | +-- isobject@3.0.1 deduped
+| | | | | | +-- mixin-deep@1.3.1
+| | | | | | | +-- for-in@1.0.2
+| | | | | | | `-- is-extendable@1.0.1
+| | | | | | |   `-- is-plain-object@2.0.4 deduped
+| | | | | | `-- pascalcase@0.1.1
+| | | | | +-- debug@2.6.9
+| | | | | | `-- ms@2.0.0
+| | | | | +-- define-property@0.2.5
+| | | | | | `-- is-descriptor@0.1.6
+| | | | | |   +-- is-accessor-descriptor@0.1.6
+| | | | | |   | `-- kind-of@3.2.2
+| | | | | |   |   `-- is-buffer@1.1.6 deduped
+| | | | | |   +-- is-data-descriptor@0.1.4
+| | | | | |   | `-- kind-of@3.2.2
+| | | | | |   |   `-- is-buffer@1.1.6 deduped
+| | | | | |   `-- kind-of@5.1.0
+| | | | | +-- extend-shallow@2.0.1
+| | | | | | `-- is-extendable@0.1.1 deduped
+| | | | | +-- map-cache@0.2.2
+| | | | | +-- source-map@0.5.7
+| | | | | +-- source-map-resolve@0.5.2
+| | | | | | +-- atob@2.1.2
+| | | | | | +-- decode-uri-component@0.2.0
+| | | | | | +-- resolve-url@0.2.1
+| | | | | | +-- source-map-url@0.4.0
+| | | | | | `-- urix@0.1.0
+| | | | | `-- use@3.1.1
+| | | | +-- snapdragon-node@2.1.1
+| | | | | +-- define-property@1.0.0
+| | | | | | `-- is-descriptor@1.0.2
+| | | | | |   +-- is-accessor-descriptor@1.0.0
+| | | | | |   | `-- kind-of@6.0.2 deduped
+| | | | | |   +-- is-data-descriptor@1.0.0
+| | | | | |   | `-- kind-of@6.0.2 deduped
+| | | | | |   `-- kind-of@6.0.2 deduped
+| | | | | +-- isobject@3.0.1 deduped
+| | | | | `-- snapdragon-util@3.0.1
+| | | | |   `-- kind-of@3.2.2
+| | | | |     `-- is-buffer@1.1.6 deduped
+| | | | +-- split-string@3.1.0
+| | | | | `-- extend-shallow@3.0.2 deduped
+| | | | `-- to-regex@3.0.2
+| | | |   +-- define-property@2.0.2 deduped
+| | | |   +-- extend-shallow@3.0.2 deduped
+| | | |   +-- regex-not@1.0.2 deduped
+| | | |   `-- safe-regex@1.1.0
+| | | |     `-- ret@0.1.15
+| | | +-- UNMET OPTIONAL DEPENDENCY fsevents@^1.2.2
+| | | +-- glob-parent@3.1.0
+| | | | +-- is-glob@3.1.0
+| | | | | `-- is-extglob@2.1.1 deduped
+| | | | `-- path-dirname@1.0.2
+| | | +-- inherits@2.0.3
+| | | +-- is-binary-path@1.0.1
+| | | | `-- binary-extensions@1.12.0
+| | | +-- is-glob@4.0.0
+| | | | `-- is-extglob@2.1.1
+| | | +-- lodash.debounce@4.0.8
+| | | +-- normalize-path@2.1.1
+| | | | `-- remove-trailing-separator@1.1.0
+| | | +-- path-is-absolute@1.0.1
+| | | +-- readdirp@2.2.1
+| | | | +-- graceful-fs@4.1.15
+| | | | +-- micromatch@3.1.10 deduped
+| | | | `-- readable-stream@2.3.6
+| | | |   +-- core-util-is@1.0.2
+| | | |   +-- inherits@2.0.3 deduped
+| | | |   +-- isarray@1.0.0
+| | | |   +-- process-nextick-args@2.0.0
+| | | |   +-- safe-buffer@5.1.2 deduped
+| | | |   +-- string_decoder@1.1.1
+| | | |   | `-- safe-buffer@5.1.2 deduped
+| | | |   `-- util-deprecate@1.0.2
+| | | `-- upath@1.1.0
+| | +-- fast-json-stable-stringify@2.0.0
+| | +-- rxjs@6.3.3 deduped
+| | `-- source-map@0.7.3
+| +-- @angular-devkit/schematics@7.1.4
+| | +-- @angular-devkit/core@7.1.4 deduped
+| | `-- rxjs@6.3.3 deduped
+| +-- @schematics/angular@7.1.4
+| | +-- @angular-devkit/core@7.1.4 deduped
+| | +-- @angular-devkit/schematics@7.1.4 deduped
+| | `-- typescript@3.1.6
+| +-- @schematics/update@0.11.4
+| | +-- @angular-devkit/core@7.1.4 deduped
+| | +-- @angular-devkit/schematics@7.1.4 deduped
+| | +-- @yarnpkg/lockfile@1.1.0
+| | +-- ini@1.3.5
+| | +-- pacote@9.1.1
+| | | +-- bluebird@3.5.3
+| | | +-- cacache@11.3.2
+| | | | +-- bluebird@3.5.3 deduped
+| | | | +-- chownr@1.1.1
+| | | | +-- figgy-pudding@3.5.1 deduped
+| | | | +-- glob@7.1.3 deduped
+| | | | +-- graceful-fs@4.1.15 deduped
+| | | | +-- lru-cache@5.1.1
+| | | | | `-- yallist@3.0.3 deduped
+| | | | +-- mississippi@3.0.0 deduped
+| | | | +-- mkdirp@0.5.1 deduped
+| | | | +-- move-concurrently@1.0.1
+| | | | | +-- aproba@1.2.0
+| | | | | +-- copy-concurrently@1.0.5
+| | | | | | +-- aproba@1.2.0 deduped
+| | | | | | +-- fs-write-stream-atomic@1.0.10 deduped
+| | | | | | +-- iferr@0.1.5
+| | | | | | +-- mkdirp@0.5.1 deduped
+| | | | | | +-- rimraf@2.6.3 deduped
+| | | | | | `-- run-queue@1.0.3 deduped
+| | | | | +-- fs-write-stream-atomic@1.0.10
+| | | | | | +-- graceful-fs@4.1.15 deduped
+| | | | | | +-- iferr@0.1.5 deduped
+| | | | | | +-- imurmurhash@0.1.4 deduped
+| | | | | | `-- readable-stream@2.3.6 deduped
+| | | | | +-- mkdirp@0.5.1 deduped
+| | | | | +-- rimraf@2.6.3 deduped
+| | | | | `-- run-queue@1.0.3
+| | | | |   `-- aproba@1.2.0 deduped
+| | | | +-- promise-inflight@1.0.1 deduped
+| | | | +-- rimraf@2.6.3 deduped
+| | | | +-- ssri@6.0.1 deduped
+| | | | +-- unique-filename@1.1.1 deduped
+| | | | `-- y18n@4.0.0
+| | | +-- figgy-pudding@3.5.1
+| | | +-- get-stream@4.1.0
+| | | | `-- pump@3.0.0
+| | | |   +-- end-of-stream@1.4.1 deduped
+| | | |   `-- once@1.4.0 deduped
+| | | +-- glob@7.1.3
+| | | | +-- fs.realpath@1.0.0
+| | | | +-- inflight@1.0.6
+| | | | | +-- once@1.4.0 deduped
+| | | | | `-- wrappy@1.0.2
+| | | | +-- inherits@2.0.3 deduped
+| | | | +-- minimatch@3.0.4 deduped
+| | | | +-- once@1.4.0
+| | | | | `-- wrappy@1.0.2 deduped
+| | | | `-- path-is-absolute@1.0.1 deduped
+| | | +-- lru-cache@4.1.5
+| | | | +-- pseudomap@1.0.2
+| | | | `-- yallist@2.1.2
+| | | +-- make-fetch-happen@4.0.1
+| | | | +-- agentkeepalive@3.5.2
+| | | | | `-- humanize-ms@1.2.1
+| | | | |   `-- ms@2.0.0 deduped
+| | | | +-- cacache@11.3.2 deduped
+| | | | +-- http-cache-semantics@3.8.1
+| | | | +-- http-proxy-agent@2.1.0
+| | | | | +-- agent-base@4.2.1
+| | | | | | `-- es6-promisify@5.0.0
+| | | | | |   `-- es6-promise@4.2.5
+| | | | | `-- debug@3.1.0
+| | | | |   `-- ms@2.0.0 deduped
+| | | | +-- https-proxy-agent@2.2.1
+| | | | | +-- agent-base@4.2.1 deduped
+| | | | | `-- debug@3.2.6
+| | | | |   `-- ms@2.1.1
+| | | | +-- lru-cache@4.1.5 deduped
+| | | | +-- mississippi@3.0.0 deduped
+| | | | +-- node-fetch-npm@2.0.2
+| | | | | +-- encoding@0.1.12
+| | | | | | `-- iconv-lite@0.4.24 deduped
+| | | | | +-- json-parse-better-errors@1.0.2
+| | | | | `-- safe-buffer@5.1.2 deduped
+| | | | +-- promise-retry@1.1.1 deduped
+| | | | +-- socks-proxy-agent@4.0.1
+| | | | | +-- agent-base@4.2.1 deduped
+| | | | | `-- socks@2.2.2
+| | | | |   +-- ip@1.1.5
+| | | | |   `-- smart-buffer@4.0.1
+| | | | `-- ssri@6.0.1 deduped
+| | | +-- minimatch@3.0.4
+| | | | `-- brace-expansion@1.1.11
+| | | |   +-- balanced-match@1.0.0
+| | | |   `-- concat-map@0.0.1
+| | | +-- minipass@2.3.5
+| | | | +-- safe-buffer@5.1.2 deduped
+| | | | `-- yallist@3.0.3
+| | | +-- mississippi@3.0.0
+| | | | +-- concat-stream@1.6.2
+| | | | | +-- buffer-from@1.1.1
+| | | | | +-- inherits@2.0.3 deduped
+| | | | | +-- readable-stream@2.3.6 deduped
+| | | | | `-- typedarray@0.0.6
+| | | | +-- duplexify@3.6.1
+| | | | | +-- end-of-stream@1.4.1 deduped
+| | | | | +-- inherits@2.0.3 deduped
+| | | | | +-- readable-stream@2.3.6 deduped
+| | | | | `-- stream-shift@1.0.0
+| | | | +-- end-of-stream@1.4.1
+| | | | | `-- once@1.4.0 deduped
+| | | | +-- flush-write-stream@1.0.3
+| | | | | +-- inherits@2.0.3 deduped
+| | | | | `-- readable-stream@2.3.6 deduped
+| | | | +-- from2@2.3.0
+| | | | | +-- inherits@2.0.3 deduped
+| | | | | `-- readable-stream@2.3.6 deduped
+| | | | +-- parallel-transform@1.1.0
+| | | | | +-- cyclist@0.2.2
+| | | | | +-- inherits@2.0.3 deduped
+| | | | | `-- readable-stream@2.3.6 deduped
+| | | | +-- pump@3.0.0 deduped
+| | | | +-- pumpify@1.5.1
+| | | | | +-- duplexify@3.6.1 deduped
+| | | | | +-- inherits@2.0.3 deduped
+| | | | | `-- pump@2.0.1
+| | | | |   +-- end-of-stream@1.4.1 deduped
+| | | | |   `-- once@1.4.0 deduped
+| | | | +-- stream-each@1.2.3
+| | | | | +-- end-of-stream@1.4.1 deduped
+| | | | | `-- stream-shift@1.0.0 deduped
+| | | | `-- through2@2.0.5
+| | | |   +-- readable-stream@2.3.6 deduped
+| | | |   `-- xtend@4.0.1
+| | | +-- mkdirp@0.5.1
+| | | | `-- minimist@0.0.8
+| | | +-- normalize-package-data@2.4.0
+| | | | +-- hosted-git-info@2.7.1
+| | | | +-- is-builtin-module@1.0.0
+| | | | | `-- builtin-modules@1.1.1
+| | | | +-- semver@5.5.1 deduped
+| | | | `-- validate-npm-package-license@3.0.4
+| | | |   +-- spdx-correct@3.1.0
+| | | |   | +-- spdx-expression-parse@3.0.0 deduped
+| | | |   | `-- spdx-license-ids@3.0.3
+| | | |   `-- spdx-expression-parse@3.0.0
+| | | |     +-- spdx-exceptions@2.2.0
+| | | |     `-- spdx-license-ids@3.0.3 deduped
+| | | +-- npm-package-arg@6.1.0
+| | | | +-- hosted-git-info@2.7.1 deduped
+| | | | +-- osenv@0.1.5 deduped
+| | | | +-- semver@5.5.1 deduped
+| | | | `-- validate-npm-package-name@3.0.0
+| | | |   `-- builtins@1.0.3
+| | | +-- npm-packlist@1.2.0
+| | | | +-- ignore-walk@3.0.1
+| | | | | `-- minimatch@3.0.4 deduped
+| | | | `-- npm-bundled@1.0.5
+| | | +-- npm-pick-manifest@2.2.3
+| | | | +-- figgy-pudding@3.5.1 deduped
+| | | | +-- npm-package-arg@6.1.0 deduped
+| | | | `-- semver@5.5.1 deduped
+| | | +-- npm-registry-fetch@3.8.0
+| | | | +-- bluebird@3.5.3 deduped
+| | | | +-- figgy-pudding@3.5.1 deduped
+| | | | +-- JSONStream@1.3.5
+| | | | | +-- jsonparse@1.3.1
+| | | | | `-- through@2.3.8 deduped
+| | | | +-- lru-cache@4.1.5 deduped
+| | | | +-- make-fetch-happen@4.0.1 deduped
+| | | | `-- npm-package-arg@6.1.0 deduped
+| | | +-- osenv@0.1.5
+| | | | +-- os-homedir@1.0.2
+| | | | `-- os-tmpdir@1.0.2
+| | | +-- promise-inflight@1.0.1
+| | | +-- promise-retry@1.1.1
+| | | | +-- err-code@1.1.2
+| | | | `-- retry@0.10.1
+| | | +-- protoduck@5.0.1
+| | | | `-- genfun@5.0.0
+| | | +-- rimraf@2.6.3
+| | | | `-- glob@7.1.3 deduped
+| | | +-- safe-buffer@5.1.2
+| | | +-- semver@5.6.0
+| | | +-- ssri@6.0.1
+| | | | `-- figgy-pudding@3.5.1 deduped
+| | | +-- tar@4.4.8
+| | | | +-- chownr@1.1.1 deduped
+| | | | +-- fs-minipass@1.2.5
+| | | | | `-- minipass@2.3.5 deduped
+| | | | +-- minipass@2.3.5 deduped
+| | | | +-- minizlib@1.2.1
+| | | | | `-- minipass@2.3.5 deduped
+| | | | +-- mkdirp@0.5.1 deduped
+| | | | +-- safe-buffer@5.1.2 deduped
+| | | | `-- yallist@3.0.3 deduped
+| | | +-- unique-filename@1.1.1
+| | | | `-- unique-slug@2.0.1
+| | | |   `-- imurmurhash@0.1.4
+| | | `-- which@1.3.1
+| | |   `-- isexe@2.0.0
+| | +-- rxjs@6.3.3 deduped
+| | +-- semver@5.5.1 deduped
+| | `-- semver-intersect@1.4.0
+| |   `-- semver@5.5.1 deduped
+| +-- inquirer@6.2.0
+| | +-- ansi-escapes@3.1.0
+| | +-- chalk@2.4.2
+| | | +-- ansi-styles@3.2.1
+| | | | `-- color-convert@1.9.3
+| | | |   `-- color-name@1.1.3
+| | | +-- escape-string-regexp@1.0.5
+| | | `-- supports-color@5.5.0
+| | |   `-- has-flag@3.0.0
+| | +-- cli-cursor@2.1.0
+| | | `-- restore-cursor@2.0.0
+| | |   +-- onetime@2.0.1
+| | |   | `-- mimic-fn@1.2.0
+| | |   `-- signal-exit@3.0.2
+| | +-- cli-width@2.2.0
+| | +-- external-editor@3.0.3
+| | | +-- chardet@0.7.0
+| | | +-- iconv-lite@0.4.24
+| | | | `-- safer-buffer@2.1.2
+| | | `-- tmp@0.0.33
+| | |   `-- os-tmpdir@1.0.2 deduped
+| | +-- figures@2.0.0
+| | | `-- escape-string-regexp@1.0.5 deduped
+| | +-- lodash@4.17.11
+| | +-- mute-stream@0.0.7
+| | +-- run-async@2.3.0
+| | | `-- is-promise@2.1.0
+| | +-- rxjs@6.3.3 deduped
+| | +-- string-width@2.1.1
+| | | +-- is-fullwidth-code-point@2.0.0
+| | | `-- strip-ansi@4.0.0 deduped
+| | +-- strip-ansi@4.0.0
+| | | `-- ansi-regex@3.0.0
+| | `-- through@2.3.8
+| +-- opn@5.3.0
+| | `-- is-wsl@1.1.0
+| +-- semver@5.5.1
+| `-- symbol-observable@1.2.0
+`-- jslint@0.12.0
+  +-- exit@0.1.2
+  +-- glob@7.1.2
+  | +-- fs.realpath@1.0.0
+  | +-- inflight@1.0.6
+  | | +-- once@1.4.0 deduped
+  | | `-- wrappy@1.0.2
+  | +-- inherits@2.0.3
+  | +-- minimatch@3.0.4
+  | | `-- brace-expansion@1.1.11
+  | |   +-- balanced-match@1.0.0
+  | |   `-- concat-map@0.0.1
+  | +-- once@1.4.0
+  | | `-- wrappy@1.0.2 deduped
+  | `-- path-is-absolute@1.0.1
+  +-- nopt@3.0.6
+  | `-- abbrev@1.1.1
+  `-- readable-stream@2.1.5
+    +-- buffer-shims@1.0.0
+    +-- core-util-is@1.0.2
+    +-- inherits@2.0.3 deduped
+    +-- isarray@1.0.0
+    +-- process-nextick-args@1.0.7
+    +-- string_decoder@0.10.31
+    `-- util-deprecate@1.0.2
+
