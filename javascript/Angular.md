@@ -69,16 +69,16 @@ We will look at how to generate components and also how to route to these compon
 ## Generation
 
 A component can be created using the angular CLI. Run the following command in the terminal:
-> ng generate component \<component-name>
+> **ng generate component** < component-name >
 
 or the short form of it:
-> ng g c \<component-name>
+> **ng g c** < component-name >
 
-We can also try to add tests and specs for the component with options **-it** and **-is** like this:
-> ng g c \<component-name> -it -is
+We can also use options **-it** and **-is** to have inline html template and css styles:
+> **ng g c** < component-name > **-it -is**
 
 To generate a component by name album-list we can run the following command in terminal:
-> ng g c album-list -it -is
+> **ng g c album-list -it -is**
 
 The above command will create the following files:
 - album-list/album-list.component.ts
@@ -128,16 +128,6 @@ There are two changes:
 
 If we do not use the `-it` and `-is` options in `ng g c` command then the dedicated template file and style sheet will be created. (-it and -is means inline template and inline style)
 
-Alternatively we can update the `schematics` element in the angular.json file in the root folder of the application as follows:
-```json
-"schematics": {
-    "@schematics/angular:component": {
-        "inlineTemplate": false,
-        "inlineStyle": false
-    }
-}
-```
-After the above update any component we create will have a dedicate html template file and css file.
 
 ### HTML Template
 - **default option**: (`templateUrl: './app-component.html'`)
