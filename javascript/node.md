@@ -8,6 +8,8 @@ This documentation explains nodejs configuration and usage:
 - Creating New Projects
 - Working with existing projects
 
+---
+
 ## Installation
 The nodejs can be downloaded and installed from URL https://nodejs.org/en/. This installs the node interpreter and npm package manager both.
 
@@ -44,7 +46,7 @@ The **yarn** package manager can be use in place of npm, but this needs to be in
 * When we install a package locally (without `-g` option) the package is only available to the local project (or current folder). Other projects cannot use the library.
 * Installing a library (package) locally is recommended. Because this way different projects in the same PC can use different versions of the same library (package).
 * Some packages like **mocha**, **nyc**, **http-server**, **nodemon**, **branch-diff**, **yarn**, **ndb**, **eslint**, **now**, **tldr**, **typescript**, **create-react-app**, **npx**, **@angular/cli** are generally run as commands in command prompt / terminal. Such packages are commonly used by all projects (and version is irrelevant). So we can install them globally using *`-g`* option so it is available to all projects in the PC.
-
+---
 ### New Project Creation
 
 We can initialize a new nodejs project by the following command:
@@ -52,14 +54,15 @@ We can initialize a new nodejs project by the following command:
 * The above command will take us through some steps like configuring name, description, author, github url, license type, etc and then initialize the nodejs project. 
 * The project settings are stored in the package.json file. So this must by part of active source code. We can also new dependencies (external js library/package) in the dependencies section in package.json file.
 * The folder for the project should be created manually before running the `npm init` command as this command does not create a new folder.
-
+---
 ### Existing project
 
 If we clone an existing project from github (or svn) then only the source code will be replicated. To install the libraries we need the following command:
-**```npm install```**
+**```bash npm install```**
 
 This will install all the packages listed in the package.json file locally.
 *__Note__: The external javascript libraries (packages) are not stored in github as they occupy a lot of space. Instead the external libraries are listed under dependencies section in package.json file. Hence the need for`npm install` after locally cloning the source code*
+
 
 
 
