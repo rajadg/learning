@@ -1,0 +1,16 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "A documentation project that is used to take notes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raja",
+  "license": "ISC",
+  "dependencies": {
+    "marked": "^0.6.0",
+    "md2html": "0.0.1",
+    "watch": "^1.0.2"
+  }
+}
