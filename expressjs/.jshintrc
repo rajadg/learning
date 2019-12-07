@@ -1,0 +1,5 @@
+{
+    "node": true,
+    "esversion": 2017,
+    "globals": {"process": true}
+}

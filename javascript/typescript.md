@@ -14,7 +14,7 @@ The typescript code does not execute standalone. Instead it is compiled (transpi
 
     Typescript --[compile]--> Javascript --> Execution
 
-_Note: All javascript code is valid typescript code._
+_<p style='color:red; font: italic'><u>Note</u>: All javascript code is valid typescript code.</p>_
 
 ## Usage
 
