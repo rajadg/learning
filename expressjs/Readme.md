@@ -92,7 +92,7 @@ The express object has one method each for a http method (example: `app.get()` i
 The express route path (or relative url) can contain a normal string or a regular expression. 
 * A route path also supports parameterized urls.
 
-#### [2.1.2.1] Defining Routes
+#### :one: Defining Routes
 We can define a route (a.k.a relative url) and assign a handler to this route. Example the following script handles the route `/library/books` (relative url: HTTP GET http://localhost:8080/library/books):
 ```javascript
 const express = require('express');
@@ -104,7 +104,7 @@ app.get('/library/books', (req, res) => {
 });
 app.listen(8080);
 ```
-#### [2.1.2.2] Route path regular expression
+#### :two: Route path regular expression :star:
 We can also use a regular express to define a route like this: 
 ```javascript
 const express = require('express');
@@ -119,7 +119,7 @@ app.get('/library/books/*', (req, res) => {
 });
 app.listen(8080);
 ```
-#### [2.1.2.3] Parameterized routes
+#### :three: Parameterized routes :sparkles:
 The components of a route can be converted to parameters by prefixing the part of the route with a `:` symbol. For example the route `/libary/books/:category/:name` will match the url `http://localhost:8080/library/books/math/algebra`. The handler code can access the parts of the url as `req.params.category` (the _:category_ in the path) and `req.params.name` (the _:name_ in the path). Example:
 
 ```javascript
@@ -137,6 +137,59 @@ app.listen(8080);
 For the url: `http://localhost:8080/library/books/math/algebra` the response will be:
 >Find book __algebra__ under category: _math_
 
+#### [2.1.3] Route Handlers
+##### :one: Simple Handler
+The handler for a route is a simple function that takes two parameters: `request`, `response`. 
+**Example 1**
+```javascript
+const express = require('express');
+const app = express();
+app.get('/', (req, res) => {
+    res.send('hello world');
+});
+app.listen(8080);
+```
+**Example 2**
+```javascript
+const express = require('express');
+const app = express();
+function getRoot(req, res) {
+    res.send('hello world');
+}
+app.get('/', getRoot);
+app.listen(8080);
+```
+
+##### :two: Chaining Handlers
+We can have multiple handlers for a single route connected as a chain. To chain more than one handler we need to call the `next()` method at the end of every handler. The `next` is actually the third parameter for the handler.
+**Example 1:**
+```javascript
+const express = require('express');
+const app = express();
+app.get('/', (req, res, next) => {
+    if (req.headers['user']) {
+        req.params.user = req.headers['user'];
+    }
+    next();
+}, (req, res) => {
+    res.send(`Hello ${req.params.user || 'guest'}`);
+});
+app.listen(8080);
+```
+**Example 2:** We can also chain multiple handlers by passing them like an array like this:
+```javascript
+const express = require('express');
+const app = express();
+function auth(req, res, next) {
+    req.params.user = req.headers['user'] || req.params.user || 'guest';
+    next(); // Call next() to ensure next handler in the chain is invoked
+}
+function content(req, res) {
+    res.send(`Hello ${req.params.user}`);
+}
+app.get('/', [auth, content]); // add a handler chain as an array
+app.listen(8080);
+```
 
 ### [2.5] Using Router
 We can add multiple routes to an express application. Each route can do a specific function. For example we can add one route per REST API which is implemented in the express application. The routing is done using the router object created using funciton call express.Router(). This object can be assigned GET, POST, PUT, DELETE, etc handlers and then used in the express application. Example code:
