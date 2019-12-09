@@ -54,12 +54,14 @@ app.listen(8080);
 ## [1.5] Using nodemon
 We can also install nodemon package globally and use it to run express server. With node we just start app one time. For every edit on the javascript code it will automatically reload the application (web server).
 > npm install -g nodemon
+> 
 > nodemon -w ./ Server.js
 
 The above command will start the Server.js script (using node) and then monitor the folder './' (i.e., current folder) and if any file is modified inside the currentfolder it will restart the Server.js script. If the file is modified multiple times, it will restart any file in the current folder is modified.
 
 If we do not want to install nodemon globally, then we can install as dev dependency and run it using npx:
 > npm install --save-dev nodemon
+> 
 > npx nodemon -w ./ Server.js
 
 # [2] Advanced
