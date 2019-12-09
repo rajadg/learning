@@ -46,7 +46,7 @@ app.use('/public', express.static('./static'));
 // Listen in the target port
 app.listen(8080);
 ```
-* The `express.static('./static')` statement creates an install of middleware express.static which will server static content. The contents will be taken from the folder './static'. The path can be relative or absolute path.
+* The `express.static('./static')` statement creates an instance of middleware express.static which will server static content. The contents will be taken from the folder './static'. The path can be relative or absolute path.
 * The `app.use('/public', ...)` part of the statement specifies that the express should host the middleware in the url http://localhost:8080/public
 * The combined statement `app.use('/public', express.static('./static'));` ensures the static content from sub-folder './static' is hosted in url: `http://localhost:8080/public`.
 * For example, the url "http://localhost:8080/public/index.html" will load the file "./static/index.html" in the browser as static website.
@@ -104,7 +104,7 @@ app.get('/library/books', (req, res) => {
 });
 app.listen(8080);
 ```
-#### :two: Route path regular expression :star:
+#### :two: Route path regular expression
 We can also use a regular express to define a route like this: 
 ```javascript
 const express = require('express');
@@ -119,7 +119,7 @@ app.get('/library/books/*', (req, res) => {
 });
 app.listen(8080);
 ```
-#### :three: Parameterized routes :sparkles:
+#### :three: Parameterized routes
 The components of a route can be converted to parameters by prefixing the part of the route with a `:` symbol. For example the route `/libary/books/:category/:name` will match the url `http://localhost:8080/library/books/math/algebra`. The handler code can access the parts of the url as `req.params.category` (the _:category_ in the path) and `req.params.name` (the _:name_ in the path). Example:
 
 ```javascript
@@ -190,8 +190,24 @@ function content(req, res) {
 app.get('/', [auth, content]); // add a handler chain as an array
 app.listen(8080);
 ```
+#### [2.1.4] app.route()
+We can also create multiple handlers for a single route like one handler per http method like this:
+```javascript
+const express = require('express');
+const app = express();
+app.route('/books').get((req, res) => {
+    res.send('Get the list of books');
+}).post((req, res) => {
+    res.send('Accept a new book');
+}).delete((req, res) => {
+    res.send('Remove a book');
+});
+app.listen(8080);
+```
+The benefit of this approach is that we can avoid typos in the route path. If one handler (e.g: GET) works then definitely all other handlers for the same route will also work.
 
-### [2.5] Using Router
+
+## [2.2] Using express.Router
 We can add multiple routes to an express application. Each route can do a specific function. For example we can add one route per REST API which is implemented in the express application. The routing is done using the router object created using funciton call express.Router(). This object can be assigned GET, POST, PUT, DELETE, etc handlers and then used in the express application. Example code:
 
 ```javascript
@@ -210,4 +226,124 @@ app.listen(8080);
 ```
 Here the url http://localhost:8080/api/about will return the about information above. The first paramter for app.use method is the relative url, the second parameter can be the router or a route based middleware like serve-static which can serve static content. In the above example, we have used a router.
 
+### Mountable Routes
+We can implement a set of functions to handle a specific route as a re-usable module. This module can be imported and then used as a route in the existing angular application like this:
+##### bookLibrary.js
+``` javascript
+const express = require("express");
+// Define a route
+var bookLibrary = express.Router();
+// Create a route handler
+bookLibrary
+    .get("/:id", (req, res) => {
+        res.send(`Get the book for id: ${req.params.id}`);
+    })
+    .post("/", (req, res) => {
+        res.send("Accept a new book");
+    })
+    .delete("/:id", (req, res) => {
+        res.send(`Remove a book with id: ${req.params.id}`);
+    });
+module.exports = {
+    bookLibrary: bookLibrary
+};
+```
+
+##### app.js
+```javascript
+const express = require('express');
+const bookLibrary = require('./bookLibrary').bookLibrary;
+const app = express();
+app.use('/books', bookLibrary);
+app.listen(8080);
+```
+In the above example, the `bookLibrary.js` is a separate module and can be re-used in more than express projects.
+
+### [2.3] Middleware
+Middleware functions are functions that have access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle. The next middleware function is commonly denoted by a variable named `next`.
+
+More details in links: 
+- https://expressjs.com/en/guide/using-middleware.html
+- https://expressjs.com/en/guide/writing-middleware.html
+
+### [2.3.1] Structure of a Middleware function
+
+![structure of middleware function goes here](./resources/images/express-middleware-structure.PNG "Middleware structure")
+
+### [2.3.2] Creating our own middleware
+#### :one: Basic Middleware
+A middle is a function that accepts 3 arguments (request, response, next).
+- The `request` is request object, `response` is the response object, `next` is a function which is actually the next middleware in the chain.
+- The implementation function of middleware must call the 'next' function at the end of execution.
+- The middleware  must be passed as second argument to the `app.use` method.
+```javascript
+// Single Middleware function to log request protocol
+app.use('/things', function (req, res, next) {
+    console.log("A request for things received at " + Date.now());
+    next();
+});
+```
+
+#### :two: Multiple Middlewares
+
+Only the first parameter of the `app.use` method is the relative url. The remaining parameters (e.g: second, third, etc) of the `app.use` method are all middlewares. We can pass any number of middlewares as arguments to the `app.use` method.
+```javascript
+// Assign multiple middlewares to the whole application
+app.use('/user/:id', function (req, res, next) {
+    // Inside First Middleware: Print request URL
+    console.log('Request URL:', req.originalUrl);
+    next();
+}, function (req, res, next) {
+    // Inside Second Middleware: Print request type
+    console.log('Request Type:', req.method);
+    next();
+});
+```
+
+### [2.3.3] Built-in Middleware
+Express has 3 built-in middleware functions:
+#### :one: express.static
+Serve static content such as HTML, Javascript, CSS, Images, etc. Example:
+```javascript
+app.use('/public', express.static('/static'));
+```
+This example will serve contents of the sub-folder static. The relative URL for the contents will be '/public'. (Example: http://localhost:8080/public/index.html)
+
+#### :two: express.json
+Used to parse incoming requests with JSON payloads. The `req.body` will contain the incoming request body. Example:
+```javascript
+var express = require('express');
+var app = express();
+// Tell express to parse JSON requests using express.json middleware
+app.use(express.json());
+app.post('/books', (req, res) => {
+    // `req.body` will be an object parsed from incoming request body
+    res.send(`Books by author: ${req.body.author}`);
+});
+app.listen(8080);
+```
+This middleware is generally used for handling REST API requests from a client.
+
+#### :three: express.urlencoded
+Used to parse incoming requests with JSON payloads. The `req.body` will contain the incoming request body. Example:
+```javascript
+var express = require('express');
+var app = express();
+// Tell express to parse incoming body as url encoded form data
+app.use(express.urlencoded());
+app.post('/books', (req, res) => {
+    // `req.body` will be an object parsed from incoming request body
+    res.send(`Books by author: ${req.body.author}`);
+});
+app.listen(8080);
+```
+This middleware is mostly used to handle forms submitted from Web pages.
+
+### [2.3.4] Third Party Middleware
+
+There are numerous third party middlewares created for express. Each middleware is for a specific purpose. For example, there is middleware for cookie-management, one for prevendint CSRF attacks, one for enabling CORS support, etc.
+A full list of widely used middlewares is listed in express website: https://expressjs.com/en/resources/middleware.html
+
+## [2.4] Error Handling
+TBD
 
