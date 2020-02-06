@@ -270,6 +270,7 @@ A CSS pseudo-element is used to style specified parts of an element. This can ei
 
 ### All CSS Attribute Selectors
 Similar to id/class selector we can also select using specific attributes. To do this we need to enclose the attribute name inside the square braces [ ]. We can either specify only attribute name, or attribute name-value pair, advanced combinations. 
+
 |Selector | Example | Example description|
 |--|--|--|
 |`[attribute]` | `[target]` | Selects all elements with a `target` attribute|
