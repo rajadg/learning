@@ -1,0 +1,19 @@
+{
+  "name": "common",
+  "version": "1.0.0",
+  "description": "Additional scripts for helping developers debug",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raja D G",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/cosmos": "2.1.7",
+    "argparse": "^1.0.10",
+    "dateformat": "^3.0.3",
+    "log4js": "^4.1.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {}
+}

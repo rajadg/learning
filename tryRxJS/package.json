@@ -1,0 +1,20 @@
+{
+  "name": "tryrxjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "argparse": "^1.0.10",
+    "dateformat": "^3.0.3",
+    "express": "^4.17.1",
+    "log4js": "^6.1.1",
+    "rxjs": "^6.5.4",
+    "rxjs-compat": "^6.5.4",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
