@@ -343,3 +343,113 @@ Subscribed to observable
 ```
 
 ---
+
+# 7. `timer` operator
+Creates an Observable that starts emitting after an initialDelay and then keeps emiting at specified interval.
+
+If we only specify initialDelay and ignore the interval, then the events will be emitted only once.
+### Example
+```javascript
+const { timer } = require("rxjs");
+const myObservable = timer(500);
+logger.debug(`Created a observable using timer operator`);
+myObservable.subscribe(
+    data => logger.debug(`data: ${data}`),
+    err => logger.error(`Error: ${err}`),
+    () => logger.debug("complete")
+);
+logger.debug(`Subscribed to observable`);
+```
+
+#### Output
+```
+Starting testBasic01 ...
+Created a observable using timer operator
+Subscribed to observable
+data: 0
+complete
+```
+
+When the interval is also specified, then the timer keeps emitting values until unsubscibed.
+
+### Example
+```javascript
+const { timer } = require("rxjs");
+const myObservable = timer(500, 500);
+logger.debug(`Created a observable using timer operator with interval`);
+myObservable.subscribe(
+    data => logger.debug(`data: ${data}`),
+    err => logger.error(`Error: ${err}`),
+    () => logger.debug("complete")
+);
+logger.debug(`Subscribed to observable`);
+```
+
+#### Output
+```
+Created a observable using timer operator with interval
+Subscribed to observable
+data: 0
+data: 1
+data: 2
+data: 3
+data: 4
+...
+```
+In the above example, the data keeps coming until we terminate the application.
+
+To stop the timer, we can use the `unsubscribe` method on the subscription (in a `setTimeout` call), but this stop the timer only. The complete event will never be fired.
+### Example
+```javascript
+const { timer } = require("rxjs");
+const myObservable = timer(500, 500);
+logger.debug(`Created a observable using timer operator with interval`);
+const subscription = myObservable.subscribe(
+    data => logger.debug(`data: ${data}`),
+    err => logger.error(`Error: ${err}`),
+    () => logger.debug("complete")
+);
+setTimeout(() => {
+    subscription.unsubscribe();
+}, 2000);
+logger.debug(`Subscribed to observable`);
+```
+
+The output will be like this:
+```
+Created a observable using timer operator with interval
+Subscribed to observable
+data: 0
+data: 1
+data: 2
+```
+*Note*: The complete event is never received as we have unsubcribed.
+
+To stop the timer after few iterations we need to use a piping operator like `take` like this:
+### Example
+```javascript
+const { timer } = require("rxjs");
+const { take } = require("rxjs/operators");
+const myObservable = timer(500, 500).pipe(take(5));
+logger.debug(`Created a observable using timer operator with interval`);
+    myObservable.subscribe(
+    data => logger.debug(`data: ${data}`),
+    err => logger.error(`Error: ${err}`),
+    () => logger.debug("complete")
+);
+logger.debug(`Subscribed to observable`);
+```
+The output will now contain a complete event also like this:
+#### Output
+```
+Created a observable using timer operator with interval
+Subscribed to observable
+data: 0
+data: 1
+data: 2
+data: 3
+data: 4
+complete
+```
+
+---

@@ -136,7 +136,7 @@ async function testRange01() {
 async function testGenerate01() {
     const { generate } = require("rxjs");
     const myObservable = generate(0, x => x < 5, x => x + 1);
-    logger.debug(`Created a observable using range operator`);
+    logger.debug(`Created a observable using generate operator`);
     myObservable.subscribe(
         data => logger.debug(`data: ${data}`),
         err => logger.error(`Error: ${err}`),
@@ -152,7 +152,7 @@ async function testGenerate02() {
         x => x < 5,
         x => x + 1,
         x => ('*').repeat(x));
-    logger.debug(`Created a observable using range operator`);
+    logger.debug(`Created a observable using generate operator`);
     myObservable.subscribe(
         data => logger.debug(`data: ${data}`),
         err => logger.error(`Error: ${err}`),
@@ -161,8 +161,62 @@ async function testGenerate02() {
     logger.debug(`Subscribed to observable`);
 }
 
+async function testTimer01() {
+    const { timer } = require("rxjs");
+    const myObservable = timer(500);
+    logger.debug(`Created a observable using timer operator`);
+    myObservable.subscribe(
+        data => logger.debug(`data: ${data}`),
+        err => logger.error(`Error: ${err}`),
+        () => logger.debug("complete")
+    );
+    logger.debug(`Subscribed to observable`);
+}
+
+
+async function testTimer02() {
+    const { timer } = require("rxjs");
+    const myObservable = timer(500, 500);
+    logger.debug(`Created a observable using timer operator with interval`);
+    myObservable.subscribe(
+        data => logger.debug(`data: ${data}`),
+        err => logger.error(`Error: ${err}`),
+        () => logger.debug("complete")
+    );
+    logger.debug(`Subscribed to observable`);
+}
+
+async function testTimer03() {
+    const { timer } = require("rxjs");
+    const myObservable = timer(500, 500);
+    logger.debug(`Created a observable using timer operator with interval`);
+    const subscription = myObservable.subscribe(
+        data => logger.debug(`data: ${data}`),
+        err => logger.error(`Error: ${err}`),
+        () => logger.debug("complete")
+    );
+    setTimeout(() => {
+        subscription.unsubscribe();
+    }, 2000);
+    logger.debug(`Subscribed to observable`);
+}
+
+
+async function testTimer04() {
+    const { timer } = require("rxjs");
+    const { take } = require("rxjs/operators");
+    const myObservable = timer(500, 500).pipe(take(5));
+    logger.debug(`Created a observable using timer operator with interval`);
+     myObservable.subscribe(
+        data => logger.debug(`data: ${data}`),
+        err => logger.error(`Error: ${err}`),
+        () => logger.debug("complete")
+    );
+    logger.debug(`Subscribed to observable`);
+}
+
 async function main() {
-    await testGenerate02();
+    await testTimer04();
 }
 
 if (require.main == module) {

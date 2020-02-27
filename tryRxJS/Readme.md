@@ -16,6 +16,7 @@ RxJS *(Reactive Extensions for JavaScript)* is a library for reactive programmin
   - [2.5. Scheduler](#25-scheduler)
 - [4. Advanced](#4-advanced)
   - [4.1. Ajax](#41-ajax)
+  - [4.2 RxJS Operators in more detail](#42-rxjs-operators-in-more-detail)
 
 ---
 
@@ -179,3 +180,8 @@ observable.subscribe(
   () => console.log(`complete`)
 );
 ```
+
+## 4.2 RxJS Operators in more detail
+
+* How to create a simple observable => [Observable](./detailed/observable.md)
+* List of commonly used creation operators => [Basic Creation Operators](./detailed/creationBasic.md)
