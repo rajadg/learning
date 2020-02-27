@@ -8,7 +8,7 @@ if (require.main == module) {
 }
 
 async function ops() {
-  const { of, interval } = require("rxjs");
+  const { of } = require("rxjs");
   const observable = of(1, 2, 3, 4, 5);
   observable.subscribe(
     data => logger.debug(`data: ${data}`),

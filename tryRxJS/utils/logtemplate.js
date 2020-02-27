@@ -4,12 +4,15 @@ const path = require("path");
 const log4js = require("log4js");
 const dateFormat = require("dateformat");
 
-function setupLogging(logDefault = "debug") {
+function setupLogging(logDefault = "debug", passThru=false) {
     const logTemplateStartTime = new Date();
     const scriptName = path.basename(process.argv[1], ".js");
     const timeStamp = dateFormat(logTemplateStartTime, "yyyy.mm.dd.HH.MM.ss");
     const logFile = path.join(path.dirname(process.argv[1]), "logs", `${scriptName}__${timeStamp}.log`);
     const appenders = { file_log: { type: "file", filename: logFile }, console_log: { type: "console" } };
+    if (passThru) {
+        appenders.console_log.layout = { type: 'messagePassThrough' };
+    }
     const defaultAppenders = { appenders: ["file_log", "console_log"], level: logDefault };
     log4js.configure({ appenders: appenders, categories: { default: defaultAppenders } });
     console.log(`log_file: ${logFile}`);
