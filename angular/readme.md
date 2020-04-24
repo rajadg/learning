@@ -167,4 +167,173 @@ We can also use any arithmetic expression, method call, etc inside the `{{` `}}`
 * We can only use an expression within a `{{` `}}` pair. But a javascript assignment statement like `{{a=2+2}}` is not allowed.
 * The expression inside the `{{` `}}` pair cannot make use of global javascript variables like `window`. For example, if we try `{{window.location.href}}` this will raise an error, instead of displaying the current URL value. If we need to use global javascript variables with interpolation, we need to first assign the value of global variable to a property in the component's typescript class. Then we can use this property in the HTML template using inerpolation.
 
+## Property Binding
+Property binding is similar to interpolation where the change in the value of property in the typescript class will reflect in the the HTML that is rendered in the browser. The interpolation has limited scope and cannot affect the DOM. But property binding can affect the DOM when the value of the property changes inside the typescript class.
+There are two ways to do property binding:
+-  **Enclosing inside `[]`** - We can simply enclose the property inside `[]` like this: `<img [height]='imageHeight'>...` and then declare the property `imageHeight` in the typescript class as `class ImageComponent { ... private imageHeight = 200; ...`.
+- **Prefixing with `bind-`** - Prefixing the attribute name with `bind-`ensures the attribute is bound to typescript property. HTML: `<img bind-height='imageHeight' ...>` and typescript class:  `class ImageComponent { ... private imageHeight = 200; ...`.
+
+Either way, the data travels in only one way: The data can be changed inside the typescript class, it will be reflected in the HTML in browser. Any changes to the attribute in the DOM in the browser will not reflect back in the typescript class property. Refer the direction of property binding in the `Component Strucuture` picture above.
+
+### Class Binding
+Class binding is like property binding, but can be done in three different ways:
+1. **Simple Binding** - Binds one or more CSS Classes to HTML element. Bind the class attribute using basic property binding => `[class]="propName"` where propName is the property from typescript class that can change at run time.
+2. **Binding by Condition** - Binds single class to HTML element based on condition. Bind the class attribute based on condition => `[class.cssName]="condition"` where `condition` is a javascript expression, and `cssName` is a valid css class name from style sheet.
+3. **ngClass Binding** - Binds one or more CSS Classes to HTML element. Bind using ngClass attribute to a map of flags => `[ngClass]="mapName"` where mapName is the property from typescript class which is map of flags(true/false value). Name of each flag is same as css class name from style sheet.
+
+#### 1. Simple Binding
+We can bind the class attribute to the property like property binding. To have this type of class binding to an element in the HTML we should use the syntax `[class]="propName"`, where the `propName` is the name of property in typescript class. The value of this property can be set to any valid CSS class name.
+##### Example
+###### CSS
+```css
+.errMsg {color: red;}
+.infoMsg {color: black;}
+.successMsg {color: green;}
+```
+###### HTML
+```HTML
+<div [class]='activeStyle'>This is target message</div>
+```
+##### Typescript
+```typescript
+class MyComponent {
+    private activeStyle = 'infoMsg';
+    onError() {
+        this.activeStyle = 'errMsg';
+    }
+    onSuccess() {
+        this.activeStyle = 'successMsg';
+    }
+}
+```
+#### 2. Binding based on Condition
+We can bind the class attribute to a specific class and enable it based on a condition. To have this type of class binding to an element in the HTML we should use the syntax ` [class.cssName]="condition"`, where the cssName is the name of the css class (from CSS file) and the condition is a typescript expression that will evaluate to true/false at runtime. When (at some point during user interaction) if the condition evaluates to try, the css class (cssName) will be applied. When the condition evaluates to false, the css class will be removed from the HTML element.
+##### Example
+**CSS** ```.errMsg {color: red;}```
+
+**HTML** ```<div [class.errMsg]='hasError'>This is the status message</div>```
+
+**Typescript**
+```typescript
+class MyComponent {
+    private hasError = false;
+    onError() {
+        this.hasError = true;
+    }
+    onSuccess() {
+        this.hasError = false;
+    }
+}
+```
+In the above example, the binding condition in HTML template uses the property `hasError` only (as any property evaluates as an expression). If required in place of `hasError` (in HTML template) we can use an expression in the HTML template.
+
+#### 3. Binding with `ngClass` directive
+We can bind multiple CSS classes to a HTML element based on conditions by using the `ngClass` attribute. This will enable us to even have different combinations of styles at run time based on the state of the application at run time. To have this type of class binding to an element in the HTML we should use the syntax `[ngClass]="classMap"`, where the `classMap` is the property in the typescript. This classMap is an object and each member of this object is a valid CSS class name. The value of this member is either true or false based if the specific CSS class is required or not.
+##### Example
+##### Example
+###### CSS
+```css
+.errMsg {color: red;}
+.largeMsg {font-size: large;}
+.italicsMsg {font-style: italic;}
+.underlinedMsg {text-decoration: underline;}
+```
+###### HTML
+```HTML
+<div [ngClass]='activeStyle'>This is target message</div>
+```
+**Typescript**
+```typescript
+class MyComponent {
+        private activeStyle = {
+        errMsg: false,
+        largeMsg: false, 
+        italicMsg: false,
+        underlinedMsg: false,                  
+    };
+    false;
+    onError() {
+        this.activeStyle.errMsg = true;
+    }
+    onSuccess() {
+        this.activeStyle.errMsg = false;
+    }
+    onHighlight() {
+        this.activeStyle.largeMsg = true;
+    }
+}
+```
+In the above example, the `activeStyle` is an object and each member is the name of a valid CSS class in style sheet. If make any of this member true, then the specific CSS class will be applied to the HTML element.
+
+
+### Style Binding
+Style binding is like class binding and can be done in three different ways:
+1. **Simple Binding** - Binds style attribute to typescript property, and the typescript property should hold the raw styles. Bind the style attribute using basic property binding => `[style]="styleData"` where styleData is the property from typescript class that can change at run time. The value of style data can be something like: `color: green; border: solid 1px black;`
+2. **Binding by expression** - Binds single style in HTML element based on expression. Bind the style attribute based on expression => `[style.styleProp]="expression"` where `expression` is a javascript expression / typescript property, the `styleProp` is a valid css style like color, font, etc. Only one style property is allowed. The `expression` should evaluate to valid value for the style. For example if we use `[style.color]="colorValue"` in HTML template, then the typescript property `colorValue` can have only a valid color value like red, green, #ff00ff, etc.
+3. **ngStyle Binding** - Binds one or more css styles to the HTML element. Bind using ngStyle attribute to a map of flags => `[ngStyle]="styleMap"` where `styleMap` is the property from typescript class which is map of styles. A style can be color, font, etc and the value can be valid value for that style.
+
+#### 1. Simple Binding Example
+##### HTML
+```HTML
+<div [style]='activeStyle'>This is target message</div>
+```
+##### Typescript
+```typescript
+class MyComponent {
+    private activeStyle = 'color: black;';
+    onError() {
+        this.activeStyle = 'color: red;';
+    }
+    onSuccess() {
+        this.activeStyle = 'color: green;';
+    }
+}
+```
+
+#### 2. Binding based on expression Example
+##### HTML
+```HTML
+<div [style.color]='activeColor'>This is the status message</div>
+```
+
+##### Typescript
+```typescript
+class MyComponent {
+    private activeColor = 'black';
+    onError() {
+        this.activeColor = 'red';
+    }
+    onSuccess() {
+        this.activeColor = 'green';
+    }
+}
+```
+
+#### 3. Binding with `ngStyle` directive Example
+
+##### HTML
+```HTML
+<div [ngStyle]='myStyle'>This is target message</div>
+```
+##### Typescript
+```typescript
+class MyComponent {
+    private myStyle = {
+        color: 'black',
+        fontSize: 'normal', 
+        textDecoration: 'none',                  
+    };
+    onError() {
+        this.myStyle.color = 'red';
+        this.myStyle.textDecoration = 'underline';
+    }
+    onSuccess() {
+        this.myStyle.color = 'green';
+    }
+    onHighlight() {
+        this.myStyle.fontSize = 'large';
+    }
+}
+```
+
 
