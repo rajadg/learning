@@ -1,6 +1,11 @@
 # Angular
 Official Documentation: https://angular.io/docs
+
+# Table of Contents
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=2 orderedList=false} -->
 - [Angular](#angular)
+- [Table of Contents](#table-of-contents)
 - [Basics](#basics)
   - [Starting Angular](#starting-angular)
     - [Steps](#steps)
@@ -12,6 +17,56 @@ Official Documentation: https://angular.io/docs
     - [environment folder](#environment-folder)
     - [angular.json](#angularjson)
     - [tsconfig.json](#tsconfigjson)
+  - [Components](#components)
+    - [Component Structure](#component-structure)
+    - [Creation](#creation)
+      - [Genearted Files](#genearted-files)
+      - [Using a Component](#using-a-component)
+    - [Inline Template](#inline-template)
+    - [Three ways to specify a Selector](#three-ways-to-specify-a-selector)
+  - [Interpolation](#interpolation)
+      - [Interpolation Limits](#interpolation-limits)
+- [Bindings](#bindings)
+  - [Property Binding](#property-binding)
+    - [Class Binding](#class-binding)
+      - [1. Simple Binding](#1-simple-binding)
+        - [Example](#example)
+          - [CSS](#css)
+          - [HTML](#html)
+        - [Typescript](#typescript)
+      - [2. Binding based on Condition](#2-binding-based-on-condition)
+        - [Example](#example-1)
+      - [3. Binding with `ngClass` directive](#3-binding-with-ngclass-directive)
+        - [Example](#example-2)
+        - [Example](#example-3)
+          - [CSS](#css-1)
+          - [HTML](#html-1)
+    - [Style Binding](#style-binding)
+      - [1. Simple Binding Example](#1-simple-binding-example)
+        - [HTML](#html-2)
+        - [Typescript](#typescript-1)
+      - [2. Binding based on expression Example](#2-binding-based-on-expression-example)
+        - [HTML](#html-3)
+        - [Typescript](#typescript-2)
+      - [3. Binding with `ngStyle` directive Example](#3-binding-with-ngstyle-directive-example)
+        - [HTML](#html-4)
+        - [Typescript](#typescript-3)
+- [Structural Directives](#structural-directives)
+  - [ngIf](#ngif)
+  - [ngSwitch](#ngswitch)
+  - [ngFor](#ngfor)
+- [Component Interaction](#component-interaction)
+- [Pipes](#pipes)
+- [Services](#services)
+- [Dependency Injection](#dependency-injection)
+- [HTTP and Observables](#http-and-observables)
+  - [Error Handling](#error-handling)
+- [Routing](#routing)
+      - [Example of RoutingModule (routing Module)](#example-of-routingmodule-routing-module)
+      - [Example of HTML template (app component)](#example-of-html-template-app-component)
+      - [Example of CSS file (app component)](#example-of-css-file-app-component)
+  - [Wild Card Routes](#wild-card-routes)
+- [Angular Forms](#angular-forms)
 
 # Basics
 ## Starting Angular
@@ -444,6 +499,7 @@ a.active {
     border: solid 1px lightblue;
 };
 ```
+
 ## Wild Card Routes
 We can also have wild card routes to handle all remaining routes not explicitly handled by available routes like this:
 
@@ -585,8 +641,29 @@ this.router.navigate([{year: 2020}], {relativeTo: this.route});
 ```
 In the above example, if the current component's route path is `/book`, then navigation will ensure the route is navigating to same component by means of the `{relativeTo: this.route}` parameter.
 
-## Child Routes
 
-## relative Navigation
+## Child Routes
+The child routes can be added as children attribute inside an existing route like this:
+```typescript
+import { BookComponent } from './books/book/book.component';
+import { AuthorComponent } from './books/author/author.component';
+import { PublisherComponent } from './books/publisher/publisher.component';
+// Define routes
+const routes: Routes = [
+  {
+    path: 'book/:isbn', component: BookComponent,
+    children: [
+      { path: 'author', component: AuthorComponent },
+      { path: 'publisher', component: PublisherComponent }
+    ]
+  },
+  { path: '**', component: NotFoundComponent },
+];
+```
+* Add the children to the exising route as shown in example above.
+* Add the `<router-outlet></router-outlet>` to the HTML template of the parent component (in this example: BookComponent).
+* If the components in child route are inside a sub-module (e.g: `./books/books.module.ts`), the `router-outlet` tag may not work. In order to make it work, import the RouterModule ( in `@angular/router`) in the sub-module (e.g: `./books/books.module.ts`) and add the RouterModule in the `imports` section.
+* Navigation from parent component (`BookComponent`). To navigate from parent component use the relativeUrl syntax: `this.router.navigate(['publisher'], {relativeTo: this.activatedRoute});`. This will trigger navigation from `http://localhost:4200/book/<isbn>` to the new route `http://localhost:4200/books/<isbn>/publisher` which is the child route.
+
 
 # Angular Forms
