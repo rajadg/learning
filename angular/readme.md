@@ -1,11 +1,12 @@
 # Angular
 Official Documentation: https://angular.io/docs
 
-# Table of Contents
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=2 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
 - [Angular](#angular)
-- [Table of Contents](#table-of-contents)
 - [Basics](#basics)
   - [Starting Angular](#starting-angular)
     - [Steps](#steps)
@@ -28,45 +29,30 @@ Official Documentation: https://angular.io/docs
       - [Interpolation Limits](#interpolation-limits)
 - [Bindings](#bindings)
   - [Property Binding](#property-binding)
-    - [Class Binding](#class-binding)
-      - [1. Simple Binding](#1-simple-binding)
-        - [Example](#example)
-          - [CSS](#css)
-          - [HTML](#html)
-        - [Typescript](#typescript)
-      - [2. Binding based on Condition](#2-binding-based-on-condition)
-        - [Example](#example-1)
-      - [3. Binding with `ngClass` directive](#3-binding-with-ngclass-directive)
-        - [Example](#example-2)
-        - [Example](#example-3)
-          - [CSS](#css-1)
-          - [HTML](#html-1)
-    - [Style Binding](#style-binding)
-      - [1. Simple Binding Example](#1-simple-binding-example)
-        - [HTML](#html-2)
-        - [Typescript](#typescript-1)
-      - [2. Binding based on expression Example](#2-binding-based-on-expression-example)
-        - [HTML](#html-3)
-        - [Typescript](#typescript-2)
-      - [3. Binding with `ngStyle` directive Example](#3-binding-with-ngstyle-directive-example)
-        - [HTML](#html-4)
-        - [Typescript](#typescript-3)
+  - [Class Binding](#class-binding)
+    - [1. Simple Binding](#1-simple-binding)
+    - [2. Binding based on Condition](#2-binding-based-on-condition)
+    - [3. Binding with ngClass directive](#3-binding-with-ngclass-directive)
+  - [Style Binding](#style-binding)
+    - [1. Simple Binding Example](#1-simple-binding-example)
+    - [2. Binding based on expression Example](#2-binding-based-on-expression-example)
+    - [3. Binding with ngStyle directive Example](#3-binding-with-ngstyle-directive-example)
 - [Structural Directives](#structural-directives)
   - [ngIf](#ngif)
   - [ngSwitch](#ngswitch)
   - [ngFor](#ngfor)
+- [Routing](#routing)
+  - [Wild Card Routes](#wild-card-routes)
 - [Component Interaction](#component-interaction)
 - [Pipes](#pipes)
 - [Services](#services)
 - [Dependency Injection](#dependency-injection)
 - [HTTP and Observables](#http-and-observables)
   - [Error Handling](#error-handling)
-- [Routing](#routing)
-      - [Example of RoutingModule (routing Module)](#example-of-routingmodule-routing-module)
-      - [Example of HTML template (app component)](#example-of-html-template-app-component)
-      - [Example of CSS file (app component)](#example-of-css-file-app-component)
-  - [Wild Card Routes](#wild-card-routes)
 - [Angular Forms](#angular-forms)
+
+<!-- /code_chunk_output -->
+
 
 # Basics
 ## Starting Angular
@@ -257,26 +243,26 @@ There are two ways to do property binding:
 
 Either way, the data travels in only one way: The data can be changed inside the typescript class, it will be reflected in the HTML in browser. Any changes to the attribute in the DOM in the browser will not reflect back in the typescript class property. Refer the direction of property binding in the `Component Strucuture` picture above.
 
-### Class Binding
+## Class Binding
 Class binding is like property binding, but can be done in three different ways:
 1. **Simple Binding** - Binds one or more CSS Classes to HTML element. Bind the class attribute using basic property binding => `[class]="propName"` where propName is the property from typescript class that can change at run time.
 2. **Binding by Condition** - Binds single class to HTML element based on condition. Bind the class attribute based on condition => `[class.cssName]="condition"` where `condition` is a javascript expression, and `cssName` is a valid css class name from style sheet.
 3. **ngClass Binding** - Binds one or more CSS Classes to HTML element. Bind using ngClass attribute to a map of flags => `[ngClass]="mapName"` where mapName is the property from typescript class which is map of flags(true/false value). Name of each flag is same as css class name from style sheet.
 
-#### 1. Simple Binding
+### 1. Simple Binding
 We can bind the class attribute to the property like property binding. To have this type of class binding to an element in the HTML we should use the syntax `[class]="propName"`, where the `propName` is the name of property in typescript class. The value of this property can be set to any valid CSS class name.
-##### Example
-###### CSS
+**`Example`**
+**CSS**
 ```css
 .errMsg {color: red;}
 .infoMsg {color: black;}
 .successMsg {color: green;}
 ```
-###### HTML
+**HTML**
 ```HTML
 <div [class]='activeStyle'>This is target message</div>
 ```
-##### Typescript
+**Typescript**
 ```typescript
 class MyComponent {
     private activeStyle = 'infoMsg';
@@ -288,9 +274,9 @@ class MyComponent {
     }
 }
 ```
-#### 2. Binding based on Condition
+### 2. Binding based on Condition
 We can bind the class attribute to a specific class and enable it based on a condition. To have this type of class binding to an element in the HTML we should use the syntax ` [class.cssName]="condition"`, where the cssName is the name of the css class (from CSS file) and the condition is a typescript expression that will evaluate to true/false at runtime. When (at some point during user interaction) if the condition evaluates to try, the css class (cssName) will be applied. When the condition evaluates to false, the css class will be removed from the HTML element.
-##### Example
+**`Example`**
 **CSS** ```.errMsg {color: red;}```
 
 **HTML** ```<div [class.errMsg]='hasError'>This is the status message</div>```
@@ -309,18 +295,17 @@ class MyComponent {
 ```
 In the above example, the binding condition in HTML template uses the property `hasError` only (as any property evaluates as an expression). If required in place of `hasError` (in HTML template) we can use an expression in the HTML template.
 
-#### 3. Binding with `ngClass` directive
+### 3. Binding with ngClass directive
 We can bind multiple CSS classes to a HTML element based on conditions by using the `ngClass` attribute. This will enable us to even have different combinations of styles at run time based on the state of the application at run time. To have this type of class binding to an element in the HTML we should use the syntax `[ngClass]="classMap"`, where the `classMap` is the property in the typescript. This classMap is an object and each member of this object is a valid CSS class name. The value of this member is either true or false based if the specific CSS class is required or not.
-##### Example
-##### Example
-###### CSS
+**`Example`**
+**CSS**
 ```css
 .errMsg {color: red;}
 .largeMsg {font-size: large;}
 .italicsMsg {font-style: italic;}
 .underlinedMsg {text-decoration: underline;}
 ```
-###### HTML
+**HTML**
 ```HTML
 <div [ngClass]='activeStyle'>This is target message</div>
 ```
@@ -348,18 +333,19 @@ class MyComponent {
 In the above example, the `activeStyle` is an object and each member is the name of a valid CSS class in style sheet. If make any of this member true, then the specific CSS class will be applied to the HTML element.
 
 
-### Style Binding
+## Style Binding
 Style binding is like class binding and can be done in three different ways:
 1. **Simple Binding** - Binds style attribute to typescript property, and the typescript property should hold the raw styles. Bind the style attribute using basic property binding => `[style]="styleData"` where styleData is the property from typescript class that can change at run time. The value of style data can be something like: `color: green; border: solid 1px black;`
 2. **Binding by expression** - Binds single style in HTML element based on expression. Bind the style attribute based on expression => `[style.styleProp]="expression"` where `expression` is a javascript expression / typescript property, the `styleProp` is a valid css style like color, font, etc. Only one style property is allowed. The `expression` should evaluate to valid value for the style. For example if we use `[style.color]="colorValue"` in HTML template, then the typescript property `colorValue` can have only a valid color value like red, green, #ff00ff, etc.
 3. **ngStyle Binding** - Binds one or more css styles to the HTML element. Bind using ngStyle attribute to a map of flags => `[ngStyle]="styleMap"` where `styleMap` is the property from typescript class which is map of styles. A style can be color, font, etc and the value can be valid value for that style.
 
-#### 1. Simple Binding Example
-##### HTML
+### 1. Simple Binding Example
+
+**HTML**
 ```HTML
 <div [style]='activeStyle'>This is target message</div>
 ```
-##### Typescript
+**Typescript**
 ```typescript
 class MyComponent {
     private activeStyle = 'color: black;';
@@ -372,13 +358,14 @@ class MyComponent {
 }
 ```
 
-#### 2. Binding based on expression Example
-##### HTML
+### 2. Binding based on expression Example
+
+**HTML**
 ```HTML
 <div [style.color]='activeColor'>This is the status message</div>
 ```
 
-##### Typescript
+**Typescript**
 ```typescript
 class MyComponent {
     private activeColor = 'black';
@@ -391,13 +378,13 @@ class MyComponent {
 }
 ```
 
-#### 3. Binding with `ngStyle` directive Example
+### 3. Binding with ngStyle directive Example
 
-##### HTML
+**HTML**
 ```HTML
 <div [ngStyle]='myStyle'>This is target message</div>
 ```
-##### Typescript
+**Typescript**
 ```typescript
 class MyComponent {
     private myStyle = {
@@ -433,20 +420,8 @@ There some more directives like ng-template, ng-container, etc which are used wi
 
 ## ngFor
 
-
-# Component Interaction
-
-# Pipes 
-
-# Services
-
-# Dependency Injection
-
-# HTTP and Observables
-
-## Error Handling
-
 # Routing
+
 To create a project with routing option try the following commandline:
 >ng new my-project --routing
 
@@ -460,7 +435,7 @@ To configure a route in existing project manually:
 * Add the `router-outlet` tag in the app.component.html file like this: ```<router-outlet></router-outlet>```
 * To link to the new route from a web page, use the `a` tag with `routerLink` attribute (instead of href attribute). Example: `<a routerLink='./search' routerLinkActive='active'>Search</a>` where `routerLink='./search'` specifies the relative url of the component, and the `routerLinkActive='active'` is used to change the style of anchor when the active url is `./search`, the `active` is a css class.
 
-#### Example of RoutingModule (routing Module)
+**Example of RoutingModule (routing Module)**
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -479,7 +454,7 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 ```
-#### Example of HTML template (app component)
+**Example of HTML template (app component)**
 
 ```html
 <div style="text-align:center">
@@ -491,7 +466,7 @@ export class AppRoutingModule { }
 <router-outlet></router-outlet>
 ```
 
-#### Example of CSS file (app component)
+**Example of CSS file (app component)**
 
 ```css
 a.active {
@@ -499,6 +474,7 @@ a.active {
     border: solid 1px lightblue;
 };
 ```
+
 
 ## Wild Card Routes
 We can also have wild card routes to handle all remaining routes not explicitly handled by available routes like this:
@@ -523,6 +499,7 @@ const routes: Routes = [
   {path: '**', component: NotFoundComponent},
 ];
 ```
+
 Here whenever we type the base url "http://localhost:4200" the browser will automatically redirect to "http://localhost:4200/comp01" due to the redirecting route configured for empty path.
 
 ## Route Parameters
@@ -629,7 +606,7 @@ In the above example, the user will be navigating from the index component to th
 * When the navigation happens, the application navigates from index component to the url: `http://localhost:4200/book;name=introducing+angular`. Note that the optional parameter is appended to the end of the url after a semicolon `;`.
 * Each optional parameter (name-value pair in the object passed to `router.navigate` method) will be appended after one semicolon `;` in the URL. If we pass multiple params the url will be appended with something like: `http://localhost:4200/book;author=any;year=2020;subject=angular`
 
-### Relative routes
+## Relative routes
 The navigate to a path relative to the current path, use the `relateiveTo` option in the `router.navigate` method like this:
 ```typescript
 // Declarations
@@ -665,5 +642,17 @@ const routes: Routes = [
 * If the components in child route are inside a sub-module (e.g: `./books/books.module.ts`), the `router-outlet` tag may not work. In order to make it work, import the RouterModule ( in `@angular/router`) in the sub-module (e.g: `./books/books.module.ts`) and add the RouterModule in the `imports` section.
 * Navigation from parent component (`BookComponent`). To navigate from parent component use the relativeUrl syntax: `this.router.navigate(['publisher'], {relativeTo: this.activatedRoute});`. This will trigger navigation from `http://localhost:4200/book/<isbn>` to the new route `http://localhost:4200/books/<isbn>/publisher` which is the child route.
 
+
+# Component Interaction
+
+# Pipes 
+
+# Services
+
+# Dependency Injection
+
+# HTTP and Observables
+
+## Error Handling
 
 # Angular Forms
