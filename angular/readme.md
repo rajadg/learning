@@ -9,34 +9,13 @@ Official Documentation: https://angular.io/docs
 - [Angular](#angular)
 - [Basics](#basics)
   - [Starting Angular](#starting-angular)
-    - [Steps](#steps)
   - [Angular Project Structure](#angular-project-structure)
-    - [app folder](#app-folder)
-      - [app-component](#app-component)
-      - [other application files](#other-application-files)
-    - [assets foler](#assets-foler)
-    - [environment folder](#environment-folder)
-    - [angular.json](#angularjson)
-    - [tsconfig.json](#tsconfigjson)
   - [Components](#components)
-    - [Component Structure](#component-structure)
-    - [Creation](#creation)
-      - [Genearted Files](#genearted-files)
-      - [Using a Component](#using-a-component)
-    - [Inline Template](#inline-template)
-    - [Three ways to specify a Selector](#three-ways-to-specify-a-selector)
   - [Interpolation](#interpolation)
-      - [Interpolation Limits](#interpolation-limits)
 - [Bindings](#bindings)
   - [Property Binding](#property-binding)
   - [Class Binding](#class-binding)
-    - [1. Simple Binding](#1-simple-binding)
-    - [2. Binding based on Condition](#2-binding-based-on-condition)
-    - [3. Binding with ngClass directive](#3-binding-with-ngclass-directive)
   - [Style Binding](#style-binding)
-    - [1. Simple Binding Example](#1-simple-binding-example)
-    - [2. Binding based on expression Example](#2-binding-based-on-expression-example)
-    - [3. Binding with ngStyle directive Example](#3-binding-with-ngstyle-directive-example)
 - [Structural Directives](#structural-directives)
   - [ngIf](#ngif)
   - [ngSwitch](#ngswitch)
@@ -406,7 +385,7 @@ class MyComponent {
 ```
 
 # Structural Directives
-Structural directives are angular directives that allows us to add or remove a HTML element in the Webpage dynamically. The directives use the typescript expressions for decision making, so the data in typescript class can influence the structure of the HTML web page at runtime.
+Structural directives are angular directives that allows us to add or remove a HTML element in the Webpage dynamically. The directives use the typescript expressions for decision making, so the data in typescript class can influence the structure of the HTML web page at runtime. All the structural directives are used as attributes in an existing html tag. 
 List of commonly used Structral directives:
 * ngIf
 * ngSwitch
@@ -414,11 +393,148 @@ List of commonly used Structral directives:
 
 There some more directives like ng-template, ng-container, etc which are used with the main directives.
 
-## ngIf
+## **ngIf** directive
+
+The `ngIf` block is used to hide or show an element. This may look similar to `display: none/inline` style, but `ngIf` has a difference. The ngIf condition will not render the html tag itself (removed from HTML DOM), if the condition is false. The ngIf is an attribute with the value as a valid typescript expression. Syntax: ``<span `*ngIf='expression' ...> ... </span>`. The `span` tag is used as an example, but we can also other tags like div, table, p, etc. The `expression` can be either a single typescript property/method that evaluates to a boolean result, or we can have a full typescript expression.
+
+** HTML Template **
+```html
+<span *ngIf='showWelcome'>
+    Welcome Guest
+</span>
+```
+** Typescript - Component class **
+```typescript
+@Component(...)
+export class MyComponent implements OnInit {
+    boolean showWelcome = false;
+    toggleWelcome() {
+        this.showWelcome = !this.showWelcome;
+    }
+}
+```
+In the above example, whenever the `toggleWelcome()` method is called in the component, the welcome message will be displayed / hidden. When the welcome message is hidden, the `span` tag itself will be missing from the HTML DOM.
+
+### ngTemplate block
+The `ng-template` block is a HTML tag that has a name. This named template can be called from any one of the other directives like `ngIf`, `ngSwitch`, etc. This is very helpful in `ngIf` directive when creating an else condition block.
+```HTML
+<ng-template #templateName>
+    <!-- HTML content goes here -->
+</ng-template>
+```
+In the above example, the `templateName` can be referred in other directives. When the above template is referred by the `templateName` then the content inside the ng-template will be rendered for the invoking scenario (e.g: ngIf condition).
+
+### Using else condition
+We can also use the else condition with `ngIf` to render alternate content when the condition is false. The syntax is `*ngIf='expression; else elseBlockName` where the `elseBlockName` is the name of the `ng-template` that holds the alternate content.
+
+#### only else Block
+** HTML Template **
+```HTML
+<div class='header'>
+    <span *ngIf='isLoggedIn; else msgGuest'>
+        Welcome {{userName}}
+    </span>
+    <ng-template #mgGuest>
+        <span>Welcome Guest</span>
+    </ng-template>
+</div>
+```
+
+** Typescript - Component class **
+```typescript
+@Component(...)
+export class MyComponent implements OnInit {
+    boolean isLoggedIn = false;
+    boolean userName =  '';
+    loginSuccess(user) {
+        this.isLoggedIn = true;
+        this.userName = user;
+    }
+}
+```
+In the above example, the HTML template will initially show the **Welcome Guest** message as the `isLoggedIn` flag value is false. But when the `loginSuccess` method is called, the `isLoggedIn` flag becomes true, so the **Welcome user** message will be displayed.
+
+** Interpretation for `isLoggedIn = false` **
+```HTML
+<div class='header'>
+    <span>Welcome Guest</span>
+</div>
+```
+** Interpretation for `isLoggedIn = true` **
+```HTML
+<div class='header'>
+    <span>Welcome {{userName}}</span>
+</div>
+```
+
+#### Together then, else Blocks
+We can also move the content of success case to one template and failure case to another template for an if-block. This helps to have a good html tags layout inside the HTML template.
+** HTML Template **
+```HTML
+<div class='header'>
+    <div *ngIf='isLoggedIn; then msgUser; else msgGuest'></div>
+    <ng-template #mgGuest>
+        <span>Welcome Guest</span>
+    </ng-template>
+    <ng-template #msgUser>
+        <span>Welcome {{userName}}</span>
+    </ng-template>
+</div>
+```
+
+** Typescript - Component class **
+```typescript
+@Component(...)
+export class MyComponent implements OnInit {
+    boolean isLoggedIn = false;
+    boolean userName =  '';
+    loginSuccess(user) {
+        this.isLoggedIn = true;
+        this.userName = user;
+    }
+}
+```
+In the above example, the HTML template will initially show the **Welcome Guest** message as the `isLoggedIn` flag value is false. But when the `loginSuccess` method is called, the `isLoggedIn` flag becomes true, so the **Welcome user** message will be displayed.
+
+** Interpretation for `isLoggedIn = false` **
+```HTML
+<div class='header'>
+    <div><span>Welcome Guest</span></div>
+</div>
+```
+** Interpretation for `isLoggedIn = true` **
+```HTML
+<div class='header'>
+    <div><span>Welcome {{userName}}</span></div>
+</div>
+```
+
+### Advanced `*ngIf`
+It is also possible to specify a template that is defined externally. Refer link: https://angular.io/api/common/NgIf#using-an-external-then-template
 
 ## ngSwitch
+The `ngSwitch` directive behaves similar to the switch case statement used in various programming languages. Here is an example:
+```HTML
+<div [ngSwitch]='typescript-expression'>
+    <div *ngSwitchCase='exp-value1'><!--case 1 HTML content goes here--></div>
+    <div *ngSwitchCase='exp-value2'><!--case 2 HTML content goes here--></div>
+    <div *ngSwitchCase='exp-value3'><!--case 3 HTML content goes here--></div>
+    <div *ngSwitchDefault><!--default case HTML content goes here--></div>
+</div>
+```
+Assign the value / expression to the `[ngSwitch]` attribute. This is similar to `switch(expression)` in javascript. Then for each case statement, use the `*ngSwitchCase` attribute with the target value. For the defalt scenario, use the `*ngSwitchDefault` attribute without any value for this attribute.
+
+All the directives (`ngSwitch`, `ngSwitchCase`, `ngSwitchDefault`) should be attributes of a valid HTML tag.
 
 ## ngFor
+The `ngFor` directive behaves similar to the for loop in various programming languages. The value of the `*ngFor` directive is a iteration definition that is very similar to the iteration definition used by the javascript  `for`-`of` loop. Here is an example:
+```HTML
+<div *ngFor='let item of list; index as i'>
+    <span>{{item.value}} is at index {{i}}</span>
+</div>
+```
+In the above example, the first part `let item of list` iterates the list. The list is a valid array defined in the typescript component class. The `item` is declared inside the HTML (inside ngFor) so it is valid inside the HTML tag that is using the ngFor directive. We can also define the index which is the second part in the ngFor `index as i`. This declares `i` as the index value in each iteration. We can also use other declarations like `last`, `odd`, `first`, `even`, etc. These are predefined boolean attributes of ngFor directive and works similar to the `index` attribute of ngFor.
+
 
 # Routing
 
