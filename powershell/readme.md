@@ -203,13 +203,3 @@ switch(3..7){
 * **`Comparison Operators`**: Supported operators are: `-eq`, `-ne`, `-gt`, `-ge`, `-lt`, `-le`, `-like`, `-notLike`, `-match`, `-notMatch`, `-contains`, `-notContains`, `-is`, `-isNot`, etc
 * Assignment operators: supported: `=`, `+=`, `-=`
 * Logical operators: supported: `-AND`, `-OR`, `-NOT`
-
-* . Example: ``
-* . Example: ``
-* . Example: ``
-* . Example: ``
-* . Example: ``
-* . Example: ``
-* . Example: ``
-* . Example: ``
-* 
